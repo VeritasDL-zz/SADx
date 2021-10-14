@@ -41,11 +41,12 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-When the Nostalgia of playing Sonic Adventure DX for the 100th time has doesnt have the same effect it used to you get
-SADx
-Now with even more SAD! Sonic's just as depressed as most Gen Z and Millennials are! 
-Live out you're depressed lives in SADx.
+When the nostalgia of playing Sonic Adventure DX for the 100th time just isn't enough anymore,
+get yourself some SADx. (Now with even more SAD!)
 
+With SADx, Sonic is just as depressed as most Gen Zs and Millennials are!
+
+Live out your depressed life with SADx today!
 ### Built With
 
 * [SADX Mod Loader](https://github.com/X-Hax/sadx-mod-loader)

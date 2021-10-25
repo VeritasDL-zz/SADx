@@ -17,7 +17,22 @@ extern "C"
 			if (GetCharacterID(0) == Characters_Sonic)
 			{
 				playerwkptr = (playerwk*)CharObj2Ptrs[0];
-				fixedFace(12, 1, 1, 100);
+				fixedFace(12, 1, 1, 100);//Sonic Sad face
+			}
+			if (GetCharacterID(0) == Characters_Tails)
+			{
+				playerwkptr = (playerwk*)CharObj2Ptrs[0];
+				fixedFace(12, 1, 1, 100); //tails sad face?
+			}
+			if (GetCharacterID(0) == Characters_Knuckles)
+			{
+				playerwkptr = (playerwk*)CharObj2Ptrs[0];
+				fixedFace(12, 1, 1, 100); //knuckles sad face?
+			}
+			if (GetCharacterID(0) == Characters_Amy)
+			{
+				playerwkptr = (playerwk*)CharObj2Ptrs[0];
+				fixedFace(12, 1, 1, 100); //amy sad face?
 			}
 		}
 	}

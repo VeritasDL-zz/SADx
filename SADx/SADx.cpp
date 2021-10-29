@@ -1,38 +1,68 @@
 #include "pch.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+#include <iostream>
+#include <string>
+#include <unordered_map>
+#include <algorithm>
+#include <vector>
+#include <IniFile.hpp>
 extern "C"
 {
 	facewk* face = 0;
+	bool SonicSadEnabled = true;
+	bool TailsSadEnabled = true;
+	bool KnucklesSadEnabled = true;
+	bool AmySadEnabled = true;
 	void fixedFace(int old, int __new, int frame, int nbFrame);
 	playerwk* playerwkptr = 0;
 	__declspec(dllexport) void __cdecl Init(const char* path, const HelperFunctions& helperFunctions)
 	{
 		// Executed at startup, contains helperFunctions and the path to your mod (useful for getting the config file.)
 		// This is where we override functions, replace static data, etc.
+		const IniFile* config = new IniFile(std::string(path) + "\\config.ini");
+		SonicSadEnabled = config->getBool("General", "SonicSadEnabled", true);
+		TailsSadEnabled = config->getBool("General", "TailsSadEnabled", true);
+		KnucklesSadEnabled = config->getBool("General", "KnucklesSadEnabled", true);
+		AmySadEnabled = config->getBool("General", "AmySadEnabled", true);
 	}
 	__declspec(dllexport) void __cdecl OnFrame()
 	{
 		// Executed every running frame of SADX
 		if (PlayerPtrs[0] != nullptr) 
 		{
-			if (GetCharacterID(0) == Characters_Sonic)
+			if (SonicSadEnabled)
 			{
-				playerwkptr = (playerwk*)CharObj2Ptrs[0];
-				fixedFace(12, 1, 1, 100);//Sonic Sad face
+				if (GetCharacterID(0) == Characters_Sonic)
+				{
+					playerwkptr = (playerwk*)CharObj2Ptrs[0];
+					fixedFace(12, 1, 1, 100);//Sonic Sad face
+				}
 			}
-			if (GetCharacterID(0) == Characters_Tails)
+			if (TailsSadEnabled)
 			{
-				playerwkptr = (playerwk*)CharObj2Ptrs[0];
-				fixedFace(12, 1, 1, 100); //tails sad face?
+				if (GetCharacterID(0) == Characters_Tails)
+				{
+					playerwkptr = (playerwk*)CharObj2Ptrs[0];
+					fixedFace(12, 1, 1, 100); //tails sad face?
+				}
 			}
-			if (GetCharacterID(0) == Characters_Knuckles)
+			if (KnucklesSadEnabled)
 			{
-				playerwkptr = (playerwk*)CharObj2Ptrs[0];
-				fixedFace(12, 1, 1, 100); //knuckles sad face?
+				if (GetCharacterID(0) == Characters_Knuckles)
+				{
+					playerwkptr = (playerwk*)CharObj2Ptrs[0];
+					fixedFace(12, 1, 1, 100); //knuckles sad face?
+				}
 			}
-			if (GetCharacterID(0) == Characters_Amy)
+			if (AmySadEnabled)
 			{
-				playerwkptr = (playerwk*)CharObj2Ptrs[0];
-				fixedFace(12, 1, 1, 100); //amy sad face?
+				if (GetCharacterID(0) == Characters_Amy)
+				{
+					playerwkptr = (playerwk*)CharObj2Ptrs[0];
+					fixedFace(12, 1, 1, 100); //amy sad face?
+				}
 			}
 		}
 	}
